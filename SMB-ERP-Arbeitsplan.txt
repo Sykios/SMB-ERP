@@ -36,19 +36,19 @@ PHASE 1: GRUNDLAGEN & SETUP (2-3 Tage)
     - Microsoft.AspNetCore.Identity.EntityFrameworkCore
 [✓] Ordnerstruktur angelegt
 [✓] Git Repository initialisiert
-[ ] Erste Git Commits mit conventional commit messages
-[ ] GitHub Repository erstellen und verknüpfen
+[✓] Erste Git Commits mit conventional commit messages
+[✓] GitHub Repository erstellen und verknüpfen
 
 1.2 BASIS-KONFIGURATION
 -----------------------
-[ ] appsettings.json konfigurieren
+[✓] appsettings.json konfigurieren
     - E-Mail-Einstellungen (SMTP)
     - Datenbankverbindung
     - Firmeninformationen
     - Logging-Konfiguration
-[ ] Error Handling Setup
-[ ] HTTPS/Security Konfiguration
-[ ] Entwicklungsumgebung optimieren
+[✓] Error Handling Setup
+[✓] HTTPS/Security Konfiguration
+[✓] Entwicklungsumgebung optimieren
 
 ================================================================================
 PHASE 2: DATENBANK & MODELLE (3-5 Tage)
@@ -62,34 +62,46 @@ Befehle für Datenbank-Setup:
 
 Aufgaben:
 [ ] ApplicationDbContext erweitern
-[ ] Datenmodelle erstellen:
-    [ ] Customer.cs (Kundendaten)
+[✓] Datenmodelle erstellen:
+    [✓] Customer.cs (Kundendaten)
         - Firmenname, Kontaktperson, E-Mail
         - Adresse (Straße, PLZ, Stadt, Land)
         - Telefon, USt-ID
         - Erstellungsdatum, Status
     
-    [ ] Invoice.cs (Rechnung)
+    [✓] Invoice.cs (Rechnung)
         - Rechnungsnummer, Datum, Fälligkeitsdatum
         - Kunde-Referenz
         - Netto-, MwSt-, Gesamtbetrag
         - Status (Entwurf, Versendet, Bezahlt, Überfällig)
         - Bemerkungen
     
-    [ ] InvoiceItem.cs (Rechnungsposition)
+    [✓] InvoiceItem.cs (Rechnungsposition)
         - Beschreibung, Menge, Einheit
         - Einzelpreis, Rabatt
         - Gesamtpreis
         - Produkt-Referenz (optional)
     
-    [ ] Product.cs (Produkt/Dienstleistung)
+    [✓] Item.cs (Produkt/Dienstleistung Basisklasse)
         - Name, Produktnummer, Beschreibung
         - Verkaufs-/Einkaufspreis
-        - Einheit, Typ (Produkt/Service)
-        - Lagerbestand, Mindestbestand
         - Kategorie, MwSt-Satz
+
+            [✓] Product.cs (Produkt)
+                - Lagerbestände
+                - Barcode
+                - Lagerort
+                - Gewicht, Abmessungen
+                - Lieferant / Hersteller
+
+            [✓] Service.cs (Dienstleistung)
+                - Geschätze Dauer
+                - Abrechnungsdaten/Zeiten
+                - Einmalig oder Dauerauftrag?
+                - Arbeitsort
+                - Material-, Reisekosten
     
-    [ ] Company.cs (Firmeneinstellungen)
+    [✓] Company.cs (Firmeneinstellungen)
         - Firmenname, Adresse
         - Kontaktdaten (Telefon, E-Mail, Website)
         - USt-ID, Handelsregister
