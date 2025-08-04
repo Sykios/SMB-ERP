@@ -75,7 +75,7 @@ namespace SMBErp.Data.Migrations
                     BillingStreet = table.Column<string>(type: "TEXT", maxLength: 200, nullable: false),
                     BillingZipCode = table.Column<string>(type: "TEXT", maxLength: 20, nullable: false),
                     BillingCity = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
-                    BillingCountry = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, defaultValue: "Deutschland"),
+                    BillingCountry = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false, defaultValue: "Österreich"),
                     ShippingStreet = table.Column<string>(type: "TEXT", maxLength: 200, nullable: true),
                     ShippingZipCode = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
                     ShippingCity = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true),

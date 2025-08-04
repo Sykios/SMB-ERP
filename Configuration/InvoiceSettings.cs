@@ -28,9 +28,9 @@ public class InvoiceSettings
     public int DefaultPaymentTermDays { get; set; } = 14;
 
     /// <summary>
-    /// Standard-Mehrwertsteuersatz (19% in Deutschland)
+    /// Standard-Mehrwertsteuersatz (20% in Österreich)
     /// </summary>
-    public decimal DefaultVatRate { get; set; } = 19.0m;
+    public decimal DefaultVatRate { get; set; } = 20.0m;
 
     /// <summary>
     /// Währung (ISO-Code)

@@ -77,7 +77,7 @@ public class CustomerConfiguration : IEntityTypeConfiguration<Customer>
         builder.Property(c => c.BillingCountry)
             .HasMaxLength(100)
             .IsRequired()
-            .HasDefaultValue("Deutschland");
+            .HasDefaultValue("Österreich");
 
         // Lieferadresse (optional)
         builder.Property(c => c.ShippingStreet)

@@ -430,7 +430,7 @@ namespace SMBErp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasMaxLength(100)
                         .HasColumnType("TEXT")
-                        .HasDefaultValue("Deutschland");
+                        .HasDefaultValue("Österreich");
 
                     b.Property<string>("BillingStreet")
                         .IsRequired()

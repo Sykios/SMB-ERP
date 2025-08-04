@@ -66,7 +66,7 @@ public class Company
     [Required]
     [StringLength(100)]
     [Display(Name = "Land")]
-    public string Country { get; set; } = "Deutschland";
+    public string Country { get; set; } = "Österreich";
 
     /// <summary>
     /// Haupttelefonnummer

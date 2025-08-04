@@ -30,7 +30,7 @@ public class CompanySettings
     /// <summary>
     /// Land
     /// </summary>
-    public string Country { get; set; } = "Deutschland";
+    public string Country { get; set; } = "Österreich";
 
     /// <summary>
     /// Telefonnummer

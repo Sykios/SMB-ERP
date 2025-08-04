@@ -122,7 +122,7 @@ public class Customer
     [Required]
     [StringLength(100)]
     [Display(Name = "Land")]
-    public string BillingCountry { get; set; } = "Deutschland";
+    public string BillingCountry { get; set; } = "Österreich";
 
     // Lieferadresse (optional, falls abweichend)
     /// <summary>
