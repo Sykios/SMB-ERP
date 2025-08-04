@@ -80,7 +80,7 @@ public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> w
     /// <summary>
     /// Konfiguriert deutsche Dezimal-Präzision für Geldbeträge
     /// </summary>
-    protected void ConfigureMoneyProperty(EntityTypeBuilder<T> builder, string propertyName, string comment = null)
+    protected void ConfigureMoneyProperty(EntityTypeBuilder<T> builder, string propertyName, string? comment = null)
     {
         builder.Property(propertyName)
             .HasPrecision(18, 2)
@@ -90,7 +90,7 @@ public abstract class BaseEntityConfiguration<T> : IEntityTypeConfiguration<T> w
     /// <summary>
     /// Konfiguriert Prozentsatz-Eigenschaft
     /// </summary>
-    protected void ConfigurePercentageProperty(EntityTypeBuilder<T> builder, string propertyName, string comment = null)
+    protected void ConfigurePercentageProperty(EntityTypeBuilder<T> builder, string propertyName, string? comment = null)
     {
         builder.Property(propertyName)
             .HasPrecision(5, 2)

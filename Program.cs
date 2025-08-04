@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using SMBErp.Configuration;
 using SMBErp.Data;
 using SMBErp.Extensions;
 using SMBErp.Middleware;
-using System.Globalization;
 
 // Logger konfigurieren
 Log.Logger = new LoggerConfiguration()

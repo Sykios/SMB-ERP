@@ -107,13 +107,13 @@ Aufgaben:
         - USt-ID, Handelsregister
         - Bankverbindung (IBAN, BIC)
     
-    [ ] EmailTemplate.cs (E-Mail-Vorlagen)
+    [✓] EmailTemplate.cs (E-Mail-Vorlagen)
         - Vorlagenname, Betreff, Inhalt
         - Typ (Rechnung, Mahnung, etc.)
 
-[ ] Entity Configurations (Fluent API)
-[ ] Seed Data für Entwicklung
-[ ] Index-Optimierungen
+[✓] Entity Configurations (Fluent API)
+[✓] Seed Data für Entwicklung
+[✓] Index-Optimierungen
 
 2.2 REPOSITORY PATTERN
 -----------------------
