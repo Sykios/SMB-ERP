@@ -117,10 +117,10 @@ Aufgaben:
 
 2.2 REPOSITORY PATTERN
 -----------------------
-[ ] ICustomerRepository Interface + Implementierung
-[ ] IInvoiceRepository Interface + Implementierung  
-[ ] IProductRepository Interface + Implementierung
-[ ] IGenericRepository für gemeinsame Operationen
+[✓] ICustomerRepository Interface + Implementierung
+[✓] IInvoiceRepository Interface + Implementierung  
+[✓] IItemRepository Interface + Implementierung
+[✓] IGenericRepository für gemeinsame Operationen
 
 ================================================================================
 PHASE 3: SERVICES & BUSINESS LOGIC (5-7 Tage)
