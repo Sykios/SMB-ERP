@@ -16,14 +16,9 @@ public interface IGenericRepository<T> where T : class
 /// <summary>
 /// Repository-Interfaces für die Application Layer
 /// </summary>
-public interface ICustomerRepository
+public interface ICustomerRepository : IGenericRepository<SMBErp.Domain.Customers.Customer>
 {
-    Task<SMBErp.Domain.Customers.Customer> AddAsync(SMBErp.Domain.Customers.Customer customer);
-    Task<SMBErp.Domain.Customers.Customer?> GetByIdAsync(int id);
     Task<SMBErp.Domain.Customers.Customer?> GetLastCustomerAsync();
-    Task<List<SMBErp.Domain.Customers.Customer>> GetAllAsync();
-    Task UpdateAsync(SMBErp.Domain.Customers.Customer customer);
-    Task DeleteAsync(int id);
 }
 
 public interface IInvoiceRepository  

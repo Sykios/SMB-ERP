@@ -1,3 +1,4 @@
+using SMBErp.Application.Common.Interfaces;
 using SMBErp.Domain.Customers;
 
 namespace SMBErp.Application.Services;
@@ -32,7 +33,9 @@ public class CustomerService
             BillingCity = request.BillingCity
         };
 
-        return await _customerRepository.AddAsync(customer);
+        await _customerRepository.AddAsync(customer);
+        await _customerRepository.SaveChangesAsync();
+        return customer;
     }
 
     private async Task<string> GenerateCustomerNumberAsync()
@@ -52,9 +55,3 @@ public record CreateCustomerRequest(
     string BillingStreet,
     string BillingZipCode,
     string BillingCity);
-
-public interface ICustomerRepository
-{
-    Task<Customer> AddAsync(Customer customer);
-    Task<Customer?> GetLastCustomerAsync();
-}
