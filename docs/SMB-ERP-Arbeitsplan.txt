@@ -155,7 +155,7 @@ PHASE 3: SERVICES & BUSINESS LOGIC (5-7 Tage)
 
 [ ] PdfService.cs
     - QuestPDF Integration
-    - Deutsche Rechnungsvorlagen
+    - Österreichische Rechnungsvorlagen
     - Logo-Integration
     - Wasserzeichen für Entwürfe
 
@@ -167,7 +167,7 @@ PHASE 3: SERVICES & BUSINESS LOGIC (5-7 Tage)
     - Produktnummern
 
 [ ] VATCalculationService.cs
-    - Deutsche MwSt-Sätze (19%, 7%, 0%)
+    - Österreichische MwSt-Sätze
     - Netto/Brutto-Berechnungen
     - Rundungslogik
 
@@ -383,12 +383,13 @@ PHASE 8: PDF-EXPORT (4-5 Tage)
 
 8.1 QUESTPDF INTEGRATION
 -------------------------
-[ ] Deutsche Rechnungsvorlage erstellen
+[ ] Österreichische Rechnungsvorlage erstellen
     - DIN 5008 konform
     - Firmenlogo einbinden
     - Absender-/Empfänger-Bereich
     - Rechnungstabelle
     - Fußbereich mit Bankdaten
+    - Generell noch auf alle Vorlagen und Normen prüfen
 
 [ ] PDF-Styling
     - Corporate Design
