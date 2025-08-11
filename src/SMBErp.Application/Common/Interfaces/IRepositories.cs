@@ -1,6 +1,19 @@
 namespace SMBErp.Application.Common.Interfaces;
 
 /// <summary>
+/// Generisches Repository-Interface für gemeinsame CRUD-Operationen
+/// </summary>
+public interface IGenericRepository<T> where T : class
+{
+    Task<T?> GetByIdAsync(int id);
+    Task<List<T>> GetAllAsync();
+    Task<T> AddAsync(T entity);
+    Task UpdateAsync(T entity);
+    Task DeleteAsync(int id);
+    Task SaveChangesAsync();
+}
+
+/// <summary>
 /// Repository-Interfaces für die Application Layer
 /// </summary>
 public interface ICustomerRepository
