@@ -1,126 +1,155 @@
 # SMB ERP System
 
-Ein modernes ERP-System für kleine und mittlere Unternehmen, entwickelt mit ASP.NET Core 8.0 und Razor Pages.
+Ein modernes ERP-System für kleine und mittelständische Unternehmen, entwickelt mit Clean Architecture und Domain-Driven Design Prinzipien.
 
-## Funktionen
+## 📁 Projektstruktur
 
-### ✅ Implementierte Module
-- **Benutzerverwaltung**: ASP.NET Identity mit Rollen (Admin, Benutzer)
-- **Kundenverwaltung**: Vollständige CRUD-Operationen für Kundendaten
-- **Rechnungserstellung**: Erstellen, bearbeiten und anzeigen von Rechnungen
-- **PDF-Export**: Automatische PDF-Generierung mit QuestPDF
-- **E-Mail-Versand**: Rechnungsversand via SMTP (konfigurierbar)
-- **Produkte/Dienstleistungen**: Katalogverwaltung
+Das Projekt folgt der **Clean Architecture** mit einer klaren Trennung der Verantwortlichkeiten:
 
-### 🚀 Geplante Erweiterungen
-- Lagerverwaltung
-- Berichtswesen und Dashboards
-- Buchhaltungsintegration
-- API für Drittanbieter-Integration
+```
+SMB-ERP/
+├── src/                           # Hauptquellcode
+│   ├── SMBErp.Domain/            # Domain Layer (Geschäftslogik)
+│   ├── SMBErp.Application/       # Application Layer (Use Cases)
+│   ├── SMBErp.Infrastructure/    # Infrastructure Layer (Daten, Services)
+│   └── SMBErp.Presentation/              # Presentation Layer
+├── tests/                        # Unit- und Integrationstests
+│   ├── SMBErp.Domain.Tests/
+│   ├── SMBErp.Application.Tests/
+│   ├── SMBErp.Infrastructure.Tests/
+│   └── SMBErp.Web.Tests/
+├── docs/                         # Dokumentation
+├── scripts/                      # Build- und Deployment-Skripte
+└── SMBErp.sln                   # Solution-Datei
+```
 
-## Technische Details
+## 🏗️ Architektur-Schichten
 
-### Tech Stack
-- **Framework**: ASP.NET Core 8.0 mit Razor Pages
-- **Datenbank**: Entity Framework Core mit SQLite
-- **Authentifizierung**: ASP.NET Core Identity
-- **PDF-Generierung**: QuestPDF
-- **E-Mail**: MailKit/SMTP
-- **Frontend**: Bootstrap 5, HTML5, CSS3, JavaScript
+### 1. Domain Layer (`SMBErp.Domain`)
+**Zweck**: Enthält die Geschäftslogik und Domain-Modelle
+- **Abhängigkeiten**: Keine (reiner .NET Core)
+- **Verantwortung**: Entitäten, Value Objects, Domain Services, Geschäftsregeln
 
-### Systemanforderungen
-- .NET 8 Runtime (kostenlos, ~60 MB)
-- Windows 10/11 oder Windows Server
-- Mindestens 4 GB RAM
-- 1 GB freier Festplattenspeicher
+```
+Domain/
+├── Common/                       # Gemeinsame Domain-Komponenten
+│   ├── BaseEntity.cs            # Basis-Entität mit Audit-Feldern
+│   └── ValueObjects/            # Value Objects (Money, EmailAddress)
+├── Customers/                   # Kunden-Domain
+│   └── Customer.cs              # Kunden-Entität
+├── Sales/                       # Verkaufs-Domain
+│   ├── Invoice.cs               # Rechnungs-Entität
+│   └── InvoiceItem.cs          # Rechnungsposition
+├── Inventory/                   # Inventar-Domain
+│   ├── Item.cs                  # Basis-Artikel
+│   ├── Product.cs               # Physisches Produkt
+│   └── Service.cs               # Dienstleistung
+├── Company/                     # Unternehmens-Domain
+└── Shared/                      # Geteilte Enums und Konstanten
+    └── Enums.cs
+```
 
-## Installation und Deployment
+### 2. Application Layer (`SMBErp.Application`)
+**Zweck**: Orchestriert Domain-Objekte für spezifische Anwendungsfälle
+- **Abhängigkeiten**: Domain Layer
+- **Verantwortung**: Use Cases, Application Services, DTOs, Interfaces
 
-### Lokales Development
+### 3. Infrastructure Layer (`SMBErp.Infrastructure`)
+**Zweck**: Implementiert externe Abhängigkeiten und technische Services
+- **Abhängigkeiten**: Domain, Application Layer
+- **Verantwortung**: Datenbankzugriff, externe APIs, E-Mail, Dateisystem
+
+### 4. Presentation Layer (`SMBErp.Presentation`)
+**Zweck**: Web-Interface und API-Endpoints
+- **Abhängigkeiten**: Alle anderen Layer
+- **Verantwortung**: Controllers, Views, ViewModels, API
+
+## 🛠️ Technologien
+
+- **.NET 8**: Moderne .NET-Plattform
+- **Entity Framework Core**: ORM für Datenbankzugriff
+- **SQLite**: Lokale Datenbank (produktionsbereit für kleine Teams)
+- **ASP.NET Core Razor Pages**: Web-Framework
+- **Identity**: Authentifizierung und Autorisierung
+- **Serilog**: Strukturiertes Logging
+- **QuestPDF**: PDF-Generierung für Rechnungen
+- **MailKit**: E-Mail-Versand
+- **xUnit**: Unit Testing Framework
+- **FluentAssertions**: Assertions für Tests
+
+## 🚀 Quick Start
+
+### Voraussetzungen
+- .NET 8 SDK
+- Visual Studio 2022 oder Visual Studio Code
+
+### Projekt starten
 ```bash
 # Repository klonen
-git clone [repository-url]
+git clone https://github.com/Sykios/SMB-ERP.git
 cd SMB-ERP
 
-# Abhängigkeiten installieren
+# Abhängigkeiten wiederherstellen
 dotnet restore
 
-# Datenbank erstellen und migrieren
+# Datenbank erstellen/migrieren
+cd src/SMBErp.Presentation
 dotnet ef database update
 
-# Anwendung starten
+# Entwicklungsserver starten
 dotnet run
 ```
 
-### Produktive Bereitstellung
-
-#### Option 1: Einfaches Hosting
+### Tests ausführen
 ```bash
-# Anwendung veröffentlichen
-dotnet publish -c Release -o ./publish
+# Alle Tests ausführen
+dotnet test
 
-# Anwendung starten
-cd publish
-dotnet SMBErp.dll
+# Bestimmtes Testprojekt ausführen
+dotnet test tests/SMBErp.Domain.Tests/
 ```
 
-#### Option 2: IIS Deployment
-1. IIS Features aktivieren
-2. .NET 8 Hosting Bundle installieren
-3. Anwendung in IIS konfigurieren
-4. SSL-Zertifikat einrichten (empfohlen)
+## 📋 Funktionen
 
-## Projektstruktur
+### 🔄 Hauptfunktionalitäten
+- **Kundenverwaltung**: Vollständige Kundenstammdaten
+- **Artikelverwaltung**: Produkte und Dienstleistungen
+- **Rechnungswesen**: Rechnungserstellung und -verwaltung
+- **Benutzerauthentifizierung**: ASP.NET Core Identity
+- **Audit-Trail**: Automatische Erstellung/Änderung-Protokollierung
+- **Clean Architecture**: Saubere Trennung der Verantwortlichkeiten
 
-```
-SMB ERP/
-├── Areas/                     # ASP.NET Identity UI
-├── Configuration/             # Konfigurationsklassen
-├── Controllers/               # API Controller (falls benötigt)
-├── Data/                     # Entity Framework DbContext
-├── Models/                   # Datenmodelle
-├── Pages/                    # Razor Pages
-│   ├── Customers/           # Kundenverwaltung
-│   ├── Invoices/            # Rechnungsverwaltung
-│   └── Products/            # Produktverwaltung
-├── Services/                 # Business Logic Services
-├── Utilities/                # Helper-Klassen
-├── ViewModels/               # ViewModels für komplexe Views
-└── wwwroot/                  # Statische Dateien
-```
+### 🔄 In Planung
+- **Dashboard**: Übersichts-Dashboard
+- **Berichte**: Umsatz- und Kundenberichte
+- **PDF-Export**: Automatische Rechnungs-PDFs
+- **E-Mail-Integration**: Automatischer Rechnungsversand
 
-## Konfiguration
+## 🧪 Testing-Strategie
 
-### E-Mail-Einstellungen (appsettings.json)
-```json
-{
-  "EmailSettings": {
-    "SmtpServer": "smtp.gmail.com",
-    "SmtpPort": 587,
-    "SenderEmail": "ihr-unternehmen@example.com",
-    "SenderName": "Ihr Unternehmen",
-    "Username": "username",
-    "Password": "password",
-    "EnableSsl": true
-  }
-}
-```
+### Unit Tests
+- **Domain Tests**: Geschäftslogik-Validierung
+- **Application Tests**: Use Case-Validierung
+- **Infrastructure Tests**: Repository-Tests mit In-Memory-DB
 
-### Datenbank-Konfiguration
-- **Development**: SQLite (app.db)
-- **Production**: SQLite oder SQL Server Express
+### Integration Tests
+- **Web Tests**: End-to-End Controller-Tests
+- **Database Tests**: Echte Datenbankintegration
 
-## Sicherheit
+## 🏛️ Domain-Driven Design Prinzipien
 
-- HTTPS-Verschlüsselung
-- ASP.NET Core Identity für Authentifizierung
-- Rollenbasierte Autorisierung
-- Input-Validierung und XSS-Schutz
-- CSRF-Schutz für alle Formulare
-- GDPR/DSGVO-konforme Datenverarbeitung
+### Entitäten
+Alle Entitäten, bis auf Company, erben von `BaseEntity` und enthalten:
+- **Audit-Eigenschaften**: CreatedAt, UpdatedAt, CreatedBy, etc.
+- **Soft Delete**: IsDeleted, DeletedAt, DeletedBy
+- **Geschäftslogik-Methoden**: Domain-spezifische Operationen
 
-## Support und Dokumentation
+### Value Objects
+- **Money**: Währungsunterstützung mit Validierung
+- **EmailAddress**: Validierte E-Mail-Adressen
+- Immutable und validierte Wertobjekte
 
-### Logging
-
-## Lizenz
+### Geschäftsregeln
+- Werden in den Domain-Entitäten implementiert
+- Keine Geschäftslogik in anderen Schichten
+- Domain Services für komplexe Geschäftsregeln

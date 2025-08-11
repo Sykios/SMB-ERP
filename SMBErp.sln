@@ -1,0 +1,64 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMBErp.Domain", "src\SMBErp.Domain\SMBErp.Domain.csproj", "{E0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMBErp.Application", "src\SMBErp.Application\SMBErp.Application.csproj", "{F0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMBErp.Infrastructure", "src\SMBErp.Infrastructure\SMBErp.Infrastructure.csproj", "{A1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMBErp.Presentation", "src\SMBErp.Presentation\SMBErp.Presentation.csproj", "{B1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMBErp.Domain.Tests", "tests\SMBErp.Domain.Tests\SMBErp.Domain.Tests.csproj", "{C1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}"
+EndProject
+
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F} = {B0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}
+		{F0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F} = {B0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}
+		{A1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F} = {B0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}
+		{B1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F} = {B0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}
+		{C1D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F} = {C0D0E6E9-A4F4-4B4E-9E8E-8F8F8F8F8F8F}
+	EndGlobalSection
+EndGlobal
