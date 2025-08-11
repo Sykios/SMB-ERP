@@ -21,10 +21,8 @@ public interface ICustomerRepository : IGenericRepository<SMBErp.Domain.Customer
     Task<SMBErp.Domain.Customers.Customer?> GetLastCustomerAsync();
 }
 
-public interface IInvoiceRepository  
+public interface IInvoiceRepository : IGenericRepository<SMBErp.Domain.Sales.Invoice>
 {
-    Task<SMBErp.Domain.Sales.Invoice> AddAsync(SMBErp.Domain.Sales.Invoice invoice);
-    Task<SMBErp.Domain.Sales.Invoice?> GetByIdAsync(int id);
     Task<List<SMBErp.Domain.Sales.Invoice>> GetByCustomerAsync(int customerId);
     Task<string> GetNextInvoiceNumberAsync();
 }
