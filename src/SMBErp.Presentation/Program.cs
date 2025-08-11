@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using SMBErp.Infrastructure.Data;
+using SMBErp.Infrastructure.Extensions;
 using SMBErp.Presentation.Extensions;
 using SMBErp.Presentation.Middleware;
 
@@ -27,12 +28,8 @@ try
     // Konfiguration registrieren
     builder.Services.AddAppConfiguration(builder.Configuration);
 
-    // EF Core und Datenbank konfigurieren
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? 
-                          throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlite(connectionString, 
-        sqliteOptions => sqliteOptions.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+    // Infrastructure Services registrieren (inkl. EF Core und Repositories)
+    builder.Services.AddInfrastructureServices(builder.Configuration);
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
     // Identity konfigurieren
