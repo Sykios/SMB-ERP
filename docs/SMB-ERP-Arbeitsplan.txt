@@ -1,6 +1,6 @@
 ================================================================================
                         SMB ERP PROJEKT - VOLLSTÄNDIGER ARBEITSPLAN
-                              Datum: 4. August 2025
+                              Datum: 11. August 2025 (Updated)
 ================================================================================
 
 PROJEKT ÜBERSICHT
@@ -9,6 +9,14 @@ Projektname:     SMB ERP System
 Technologie:     ASP.NET Core 8.0 mit Razor Pages
 Datenbank:       Entity Framework Core mit SQLite
 Zielsetzung:     Vollständiges ERP-System mit lokalem Deployment
+Ansatz:          FULLSTACK ENTWICKLUNG (Frontend-to-Backend)
+
+ENTWICKLUNGSPHILOSOPHIE
+================================================================================
+Ab Phase 3 verwenden wir einen FULLSTACK-ANSATZ:
+- Jede Funktion wird in dünne Tasks aufgeteilt
+- Workflow: UI → Backend → Integration
+- Beispiel: "Login" = UI erstellen → Backend Setup → Form Processing
 
 HAUPTMODULE
 ================================================================================
@@ -20,7 +28,7 @@ HAUPTMODULE
 ✓ Produkt-/Dienstleistungsverwaltung
 ✓ Dashboard und Reporting
 
-GESCHÄTZTE PROJEKTDAUER: 45 Arbeitstage
+GESCHÄTZTE PROJEKTDAUER: 30-35 Arbeitstage (reduziert durch dünne Tasks)
 
 ================================================================================
 PHASE 1: GRUNDLAGEN & SETUP (2-3 Tage)
@@ -123,388 +131,470 @@ Aufgaben:
 [✓] IGenericRepository für gemeinsame Operationen
 
 ================================================================================
-PHASE 3: SERVICES & BUSINESS LOGIC (5-7 Tage)
+PHASE 3: LOGIN & AUTHENTICATION (2-3 Tage) - FULLSTACK APPROACH
 ================================================================================
 
-3.1 CORE SERVICES
-------------------
-[ ] CustomerService.cs
-    - CRUD-Operationen für Kunden
-    - Kundensuchfunktionen
-    - Datenvalidierung
-    - Duplikatsprüfung
-
-[ ] InvoiceService.cs
-    - Rechnungserstellung und -bearbeitung
-    - Automatische Berechnungen (Netto, MwSt, Gesamt)
-    - Rechnungsnummern-Generierung
-    - Status-Verwaltung
-    - Fälligkeitsprüfung
-
-[ ] ProductService.cs
-    - Produktverwaltung
-    - Lagerverwaltung
-    - Preishistorie
-    - Kategorieverwaltung
-
-[ ] EmailService.cs
-    - SMTP-Konfiguration
-    - E-Mail-Versand mit Anhängen
-    - Template-System
-    - Fehlerbehandlung und Retry-Logik
-
-[ ] PdfService.cs
-    - QuestPDF Integration
-    - Österreichische Rechnungsvorlagen
-    - Logo-Integration
-    - Wasserzeichen für Entwürfe
-
-3.2 UTILITY SERVICES
----------------------
-[ ] NumberingService.cs
-    - Rechnungsnummern (fortlaufend, jahresbasiert)
-    - Kundennummern
-    - Produktnummern
-
-[ ] VATCalculationService.cs
-    - Österreichische MwSt-Sätze
-    - Netto/Brutto-Berechnungen
-    - Rundungslogik
-
-[ ] ValidationService.cs
-    - Business Rules
-    - Datenvalidierung
-    - USt-ID Prüfung
-    - E-Mail-Validierung
-
-[ ] FileService.cs
-    - Datei-Upload/Download
-    - Logo-Verwaltung
-    - Backup-Funktionen
-
-3.3 DEPENDENCY INJECTION
--------------------------
-[ ] Services in Program.cs registrieren
-[ ] Service Lifetimes definieren (Singleton, Scoped, Transient)
-[ ] Configuration Options Pattern implementieren
-[ ] Health Checks konfigurieren
-
-================================================================================
-PHASE 4: BENUTZERAUTHENTIFIZIERUNG (2-3 Tage)
-================================================================================
-
-4.1 ASP.NET IDENTITY SETUP
----------------------------
-[ ] Identity Konfiguration in Program.cs
-[ ] Custom User Model erweitern
-    - Firmen-Zuordnung
-    - Letzte Anmeldung
-    - Benutzer-Präferenzen
-
-[ ] Rollen definieren:
-    - Administrator (Vollzugriff)
-    - Benutzer (Eingeschränkter Zugriff)
-    - Buchhalter (Nur Rechnungen)
-
-[ ] Authorization Policies
-    - Rollenbasierte Zugriffskontrolle
-    - Resource-basierte Autorisierung
-
-4.2 BENUTZEROBERFLÄCHE
-----------------------
-[ ] Login/Logout Funktionalität
-[ ] Benutzerregistrierung (nur für Admins)
-[ ] Passwort Reset per E-Mail
-[ ] Benutzerverwaltung
-    - Benutzer anlegen/bearbeiten/deaktivieren
-    - Rollen zuweisen
-    - Aktivitätsprotokolle
-
-[ ] Zwei-Faktor-Authentifizierung (optional)
-
-================================================================================
-PHASE 5: KUNDENVERWALTUNG (4-5 Tage)
-================================================================================
-
-5.1 RAZOR PAGES
----------------
-[ ] Pages/Customers/Index.cshtml
-    - Kundenliste mit Pagination
-    - Such- und Filterfunktionen
-    - Sortierung nach verschiedenen Kriterien
-    - Bulk-Aktionen
-
-[ ] Pages/Customers/Create.cshtml
-    - Formular für neue Kunden
-    - Client-/Server-seitige Validierung
-    - Adress-Validierung
-    - USt-ID Prüfung
-
-[ ] Pages/Customers/Edit.cshtml
-    - Kundenbearbeitung
-    - Änderungshistorie
-    - Sicherheitsabfragen
-
-[ ] Pages/Customers/Details.cshtml
-    - Vollständige Kundenansicht
-    - Rechnungshistorie
-    - Kommunikationshistorie
-    - Statistiken
-
-[ ] Pages/Customers/Delete.cshtml
-    - Löschbestätigung
-    - Referenz-Prüfung (Rechnungen vorhanden?)
-    - Soft Delete vs. Hard Delete
-
-5.2 VIEWMODELS
---------------
-[ ] CustomerListViewModel.cs
-    - Pagination-Parameter
-    - Such-/Filter-Kriterien
-    - Sortierung
-
-[ ] CustomerCreateViewModel.cs
-    - Validierungsregeln
-    - Dropdown-Listen
-    - Standard-Werte
-
-[ ] CustomerEditViewModel.cs
-    - Änderungsverfolgung
-    - Optimistic Locking
-
-5.3 ERWEITERTE FEATURES
+3.1 BASIC LOGIN SYSTEM
 -----------------------
-[ ] Excel/CSV Export
-[ ] Datenimport aus Excel
-[ ] Duplikatserkennung
-[ ] Kunden-Kategorisierung
-[ ] Notizen und Anhänge
-[ ] Aktivitätsprotokolle
+[ ] Task 3.1.1: Create Login Page UI
+    - Create Pages/Account/Login.cshtml
+    - Simple login form with email/password
+    - Basic styling with Bootstrap
+    - Client-side validation
+
+[ ] Task 3.1.2: Login Backend Setup
+    - Configure ASP.NET Identity in Program.cs
+    - Create ApplicationUser model
+    - Setup authentication middleware
+
+[ ] Task 3.1.3: Login Form Processing
+    - Implement login page model
+    - Handle form submission
+    - Redirect after successful login
+    - Display error messages
+
+[ ] Task 3.1.4: Logout Functionality
+    - Add logout button to layout
+    - Implement logout action
+    - Clear authentication cookies
+
+[ ] Task 3.1.5: Basic User Registration (Admin Only)
+    - Create simple registration form
+    - Backend user creation
+    - Email validation
 
 ================================================================================
-PHASE 6: PRODUKTVERWALTUNG (3-4 Tage)
+PHASE 4: BASIC DASHBOARD (1-2 Tage) - FULLSTACK APPROACH
 ================================================================================
 
-6.1 RAZOR PAGES
----------------
-[ ] Pages/Products/Index.cshtml
-[ ] Pages/Products/Create.cshtml
-[ ] Pages/Products/Edit.cshtml
-[ ] Pages/Products/Details.cshtml
-
-6.2 FEATURES
-------------
-[ ] Produktkategorien
-[ ] Preishistorie
-[ ] Lagerbestand-Tracking
-[ ] Lieferanten-Verwaltung
-[ ] Bulk-Import via Excel
-[ ] Barcode-Support
-[ ] Produktbilder
-
-================================================================================
-PHASE 7: RECHNUNGSERSTELLUNG (7-10 Tage)
-================================================================================
-
-7.1 RECHNUNG GRUNDFUNKTIONEN
+4.1 LANDING PAGE AFTER LOGIN
 -----------------------------
-[ ] Pages/Invoices/Index.cshtml
-    - Rechnungsübersicht
-    - Status-Filter
-    - Datum-Filter
-    - Kundenfilter
-    - Suchfunktion
+[ ] Task 4.1.1: Create Dashboard UI Layout
+    - Create Pages/Dashboard/Index.cshtml
+    - Basic header with welcome message
+    - Navigation cards for main modules
+    - Clean, responsive layout
 
-[ ] Pages/Invoices/Create.cshtml
-    - Kunde auswählen
-    - Rechnungspositionen hinzufügen
-    - Automatische Berechnungen
-    - Zahlungsbedingungen
-    - Bemerkungen
+[ ] Task 4.1.2: Dashboard Navigation Setup
+    - Implement navigation links
+    - Add icon placeholders for modules
+    - Basic routing to empty pages
 
-[ ] Pages/Invoices/Edit.cshtml
-    - Nur Entwürfe bearbeitbar
-    - Versionskontrolle
-    - Änderungsprotokoll
-
-[ ] Pages/Invoices/Details.cshtml
-    - Vollständige Rechnungsansicht
-    - Zahlungshistorie
-    - E-Mail-Historie
-    - Aktionen (PDF, E-Mail, Kopieren)
-
-7.2 RECHNUNGSLOGIK
-------------------
-[ ] Automatische Rechnungsnummern
-    - Format: RG-YYYY-NNNN
-    - Fortlaufende Nummerierung
-    - Jahresbasierte Zurücksetzung
-
-[ ] MwSt-Berechnung
-    - 19% (Normalsatz)
-    - 7% (Ermäßigter Satz)
-    - 0% (Steuerbefreit)
-    - Innergemeinschaftliche Lieferungen
-
-[ ] Rabatte
-    - Prozentuale Rabatte
-    - Absolute Rabatte
-    - Positionsbezogene Rabatte
-    - Gesamtrabatt
-
-[ ] Zahlungsbedingungen
-    - Skonto bei Zahlung binnen X Tagen
-    - Netto-Zahlungsziel
-    - Mahngebühren
-
-[ ] Status-Verwaltung
-    - Entwurf → Versendet → Bezahlt
-    - Überfälligkeits-Prüfung
-    - Stornierung
-    - Gutschriften
-
-7.3 DYNAMISCHE RECHNUNGSPOSITIONEN
------------------------------------
-[ ] JavaScript für UI-Interaktivität
-    - Positionen hinzufügen/entfernen
-    - Echtzeit-Berechnungen
-    - Produktsuche mit Autocomplete
-    - Copy & Paste von Positionen
-
-[ ] Produktauswahl
-    - Dropdown mit Suche
-    - Produktdetails anzeigen
-    - Preise automatisch übernehmen
-    - Lagerbestand prüfen
+[ ] Task 4.1.3: Dashboard Statistics Widgets (Empty)
+    - Create placeholder widgets
+    - Static counters for demo
+    - Prepare structure for real data
 
 ================================================================================
-PHASE 8: PDF-EXPORT (4-5 Tage)
+PHASE 5: CUSTOMER SEARCH (1-2 Tage) - FULLSTACK APPROACH
 ================================================================================
 
-8.1 QUESTPDF INTEGRATION
--------------------------
-[ ] Österreichische Rechnungsvorlage erstellen
-    - DIN 5008 konform
-    - Firmenlogo einbinden
-    - Absender-/Empfänger-Bereich
-    - Rechnungstabelle
-    - Fußbereich mit Bankdaten
-    - Generell noch auf alle Vorlagen und Normen prüfen
+5.1 CUSTOMER SEARCH FUNCTIONALITY
+----------------------------------
+[ ] Task 5.1.1: Customer Search UI
+    - Create Pages/Customers/Index.cshtml
+    - Simple search bar component
+    - Results table structure
+    - Pagination placeholder
 
-[ ] PDF-Styling
-    - Corporate Design
-    - Schriftarten
-    - Farben und Layout
-    - Responsive Tabellen
+[ ] Task 5.1.2: Search API Endpoint
+    - Create customer search backend method
+    - Implement basic text search
+    - Return JSON for AJAX calls
 
-8.2 PDF FEATURES
------------------
-[ ] Verschiedene Dokumenttypen
-    - Rechnung
-    - Angebot
-    - Lieferschein
-    - Gutschrift
+[ ] Task 5.1.3: Connect Search Frontend to Backend
+    - JavaScript for search functionality
+    - AJAX calls to search endpoint
+    - Display results dynamically
+    - Handle empty results
 
-[ ] Wasserzeichen für Entwürfe
-[ ] Seitennummerierung
-[ ] PDF/A-Konformität für Archivierung
-[ ] Batch-PDF-Generierung
-[ ] Digitale Signatur (optional)
-
-8.3 CUSTOMIZATION
-------------------
-[ ] Template-Editor für Admin
-[ ] Verschiedene Layouts
-[ ] Mehrsprachige PDFs
-[ ] QR-Codes für Online-Zahlung
+[ ] Task 5.1.4: Customer Search Service
+    - Implement CustomerService.SearchCustomersAsync()
+    - Database queries with filtering
+    - Pagination logic
 
 ================================================================================
-PHASE 9: E-MAIL INTEGRATION (3-4 Tage)
+PHASE 6: CUSTOMER MANAGEMENT (3-4 Tage) - FULLSTACK APPROACH
 ================================================================================
 
-9.1 SMTP KONFIGURATION
------------------------
-[ ] SMTP-Einstellungen UI
-    - Server, Port, Verschlüsselung
-    - Benutzername, Passwort
-    - Test-E-Mail Funktion
-    - Verschiedene Provider (Gmail, Outlook, etc.)
-
-[ ] E-Mail Templates
-    - HTML/Text Templates
-    - Platzhalter-System
-    - Template-Editor
-    - Mehrsprachige Templates
-
-9.2 E-MAIL FEATURES
--------------------
-[ ] Rechnungsversand
-    - PDF-Anhang automatisch
-    - Personalisierte Betreffzeile
-    - BCC an eigene Adresse
-    - Delivery-Status Tracking
-
-[ ] E-Mail History
-    - Versendete E-Mails protokollieren
-    - Fehlschläge dokumentieren
-    - Wiederversand-Funktion
-
-[ ] Serien-E-Mails
-    - Mehrere Rechnungen auf einmal
-    - Mahnungen
-    - Newsletter (optional)
-
-9.3 ERWEITERTE FUNKTIONEN
+6.1 VIEW CUSTOMER DETAILS
 --------------------------
-[ ] E-Mail-Vorlagen-System
-[ ] Automatische Mahnungen
-[ ] Zahlungserinnerungen
-[ ] Read-Receipts (optional)
+[ ] Task 6.1.1: Customer Details UI
+    - Create Pages/Customers/Details.cshtml
+    - Display customer information
+    - Action buttons (Edit, Delete)
+    - Basic styling
+
+[ ] Task 6.1.2: Customer Details Backend
+    - Implement GetCustomerByIdAsync()
+    - Handle not found cases
+    - Authorization checks
+
+6.2 CREATE NEW CUSTOMER
+------------------------
+[ ] Task 6.2.1: Create Customer Form UI
+    - Create Pages/Customers/Create.cshtml
+    - Form fields for customer data
+    - Client-side validation
+    - Save/Cancel buttons
+
+[ ] Task 6.2.2: Customer Creation Backend
+    - Implement CreateCustomerAsync()
+    - Server-side validation
+    - Duplicate checking
+    - Customer number generation
+
+[ ] Task 6.2.3: Form Submission Handling
+    - Connect form to backend
+    - Handle validation errors
+    - Success/error messages
+    - Redirect after creation
+
+6.3 EDIT CUSTOMER
+------------------
+[ ] Task 6.3.1: Edit Customer Form UI
+    - Create Pages/Customers/Edit.cshtml
+    - Pre-populate form with existing data
+    - Update/Cancel buttons
+
+[ ] Task 6.3.2: Customer Update Backend
+    - Implement UpdateCustomerAsync()
+    - Optimistic concurrency handling
+    - Validation rules
+
+[ ] Task 6.3.3: Update Form Processing
+    - Handle form submission
+    - Display validation errors
+    - Success confirmation
+
+6.4 DELETE CUSTOMER
+--------------------
+[ ] Task 6.4.1: Delete Confirmation UI
+    - Simple confirmation dialog
+    - Display customer info before delete
+    - Delete/Cancel buttons
+
+[ ] Task 6.4.2: Customer Deletion Backend
+    - Implement soft delete functionality
+    - Check for related invoices
+    - Prevent deletion if references exist
 
 ================================================================================
-PHASE 10: DASHBOARD & REPORTING (5-6 Tage)
+PHASE 7: PRODUCT SEARCH & MANAGEMENT (2-3 Tage) - FULLSTACK APPROACH
 ================================================================================
 
-10.1 DASHBOARD
---------------
-[ ] Pages/Dashboard.cshtml
-    - Übersichtseite nach Login
-    - Widgets für wichtige KPIs
-    - Schnellzugriff auf häufige Aktionen
+7.1 PRODUCT SEARCH
+-------------------
+[ ] Task 7.1.1: Product Search UI
+    - Create Pages/Products/Index.cshtml
+    - Search bar for products
+    - Results table with key info
+    - Filter by category dropdown
 
-[ ] Umsatz-Widgets
-    - Monatlicher Umsatz
-    - Jahresumsatz
-    - Vergleich zum Vorjahr
-    - Trend-Diagramme
+[ ] Task 7.1.2: Product Search Backend
+    - Implement ProductService.SearchAsync()
+    - Database queries for products/services
+    - Category filtering
 
-[ ] Rechnungs-Widgets
-    - Offene Rechnungen
-    - Überfällige Rechnungen
-    - Anzahl Rechnungen heute/diese Woche
-    - Durchschnittlicher Rechnungsbetrag
+[ ] Task 7.1.3: Connect Product Search
+    - JavaScript search functionality
+    - AJAX calls for dynamic search
+    - Display results in table
 
-[ ] Kunden-Widgets
-    - Neue Kunden diese Woche
-    - Top-Kunden nach Umsatz
-    - Kundenwachstum
+7.2 BASIC PRODUCT CRUD
+-----------------------
+[ ] Task 7.2.1: Product Details UI
+    - Create Pages/Products/Details.cshtml
+    - Display product/service information
+    - Action buttons
 
-10.2 REPORTING
---------------
-[ ] Umsatzberichte
-    - Monats-/Jahresberichte
-    - Kunden-spezifische Auswertungen
-    - Produkt-Analysen
-    - Diagramme und Charts
+[ ] Task 7.2.2: Create Product Form UI
+    - Create Pages/Products/Create.cshtml
+    - Form for basic product data
+    - Product vs Service selection
 
-[ ] Steuerberichte
-    - MwSt-Voranmeldung Daten
-    - Umsatzsteuer-Zusammenfassung
-    - Export für Steuerberater
+[ ] Task 7.2.3: Product Creation Backend
+    - Implement CreateProductAsync()
+    - Handle Product/Service inheritance
+    - Generate product numbers
 
-[ ] Kundenberichte
-    - Kundenumsätze
-    - Zahlungsverhalten
+[ ] Task 7.2.4: Product CRUD Operations
+    - Edit product functionality
+    - Update backend methods
+    - Delete with confirmation
+
+================================================================================
+PHASE 8: BASIC INVOICE CREATION (4-5 Tage) - FULLSTACK APPROACH
+================================================================================
+
+8.1 INVOICE LIST & SEARCH
+--------------------------
+[ ] Task 8.1.1: Invoice List UI
+    - Create Pages/Invoices/Index.cshtml
+    - List all invoices in table
+    - Status indicators
+    - Date filtering
+
+[ ] Task 8.1.2: Invoice Search Backend
+    - Implement InvoiceService.SearchAsync()
+    - Filter by customer, date, status
+    - Pagination support
+
+[ ] Task 8.1.3: Invoice List Interactions
+    - Search functionality
+    - Status filter dropdown
+    - Click to view details
+
+8.2 CREATE INVOICE - BASIC VERSION
+-----------------------------------
+[ ] Task 8.2.1: Invoice Creation UI - Header
+    - Create Pages/Invoices/Create.cshtml
+    - Customer selection dropdown
+    - Invoice date picker
+    - Basic invoice information form
+
+[ ] Task 8.2.2: Customer Selection Backend
+    - API endpoint for customer lookup
+    - Return customer data for invoice
+    - Auto-populate customer fields
+
+[ ] Task 8.2.3: Invoice Line Items UI
+    - Dynamic table for invoice items
+    - Add/Remove row buttons
+    - Product search within rows
+    - Quantity and price inputs
+
+[ ] Task 8.2.4: Product Selection in Invoice
+    - Product autocomplete search
+    - Auto-populate price from product
+    - Calculate line totals with JavaScript
+
+[ ] Task 8.2.5: Invoice Calculations Frontend
+    - JavaScript for real-time calculations
+    - Line totals, subtotal, VAT, total
+    - Update on input changes
+
+[ ] Task 8.2.6: Invoice Creation Backend
+    - Implement CreateInvoiceAsync()
+    - Generate invoice numbers
+    - Save invoice with line items
+    - Validation and business rules
+
+[ ] Task 8.2.7: Invoice Save Processing
+    - Handle form submission
+    - Process invoice items array
+    - Success/error handling
+    - Redirect to invoice details
+
+8.3 VIEW INVOICE DETAILS
+-------------------------
+[ ] Task 8.3.1: Invoice Details UI
+    - Create Pages/Invoices/Details.cshtml
+    - Display complete invoice
+    - Action buttons (Edit, PDF, Email)
+    - Professional invoice layout
+
+[ ] Task 8.3.2: Invoice Details Backend
+    - Implement GetInvoiceByIdAsync()
+    - Include customer and line items
+    - Calculate totals server-side
+
+================================================================================
+PHASE 9: BASIC PDF GENERATION (2-3 Tage) - FULLSTACK APPROACH
+================================================================================
+
+9.1 PDF DOWNLOAD FUNCTIONALITY
+-------------------------------
+[ ] Task 9.1.1: PDF Download Button UI
+    - Add PDF button to invoice details
+    - Loading indicator during generation
+    - Download prompt handling
+
+[ ] Task 9.1.2: Basic PDF Service Setup
+    - Install and configure QuestPDF
+    - Create basic PDF template
+    - Simple invoice layout
+
+[ ] Task 9.1.3: PDF Generation Backend
+    - Implement GenerateInvoicePdfAsync()
+    - Map invoice data to PDF
+    - Return PDF as byte array
+
+[ ] Task 9.1.4: PDF Download Endpoint
+    - Create PDF download action
+    - Set proper content type
+    - Handle file naming
+
+================================================================================
+PHASE 10: BASIC EMAIL FUNCTIONALITY (2-3 Tage) - FULLSTACK APPROACH
+================================================================================
+
+10.1 EMAIL SETUP
+-----------------
+[ ] Task 10.1.1: Email Configuration UI
+    - Basic SMTP settings page
+    - Test email functionality
+    - Save configuration
+
+[ ] Task 10.1.2: Email Service Backend
+    - Install and configure MailKit
+    - Implement basic email sending
+    - SMTP configuration handling
+
+10.2 SEND INVOICE BY EMAIL
+--------------------------
+[ ] Task 10.2.1: Send Email Button UI
+    - Add email button to invoice details
+    - Email recipient input field
+    - Send confirmation dialog
+
+[ ] Task 10.2.2: Email Sending Backend
+    - Implement SendInvoiceEmailAsync()
+    - Attach PDF to email
+    - Email template system
+
+[ ] Task 10.2.3: Email Send Processing
+    - Handle email form submission
+    - Show success/error messages
+    - Email history logging
+
+================================================================================
+PHASE 11: DASHBOARD WITH REAL DATA (1-2 Tage) - FULLSTACK APPROACH
+================================================================================
+
+11.1 DASHBOARD STATISTICS
+--------------------------
+[ ] Task 11.1.1: Dashboard Stats UI Enhancement
+    - Update dashboard with real widgets
+    - Charts placeholders
+    - KPI cards styling
+
+[ ] Task 11.1.2: Dashboard Data Backend
+    - Implement GetDashboardStatsAsync()
+    - Calculate customer count, invoice totals
+    - Recent activities queries
+
+[ ] Task 11.1.3: Dashboard Data Integration
+    - Connect frontend to dashboard API
+    - Display real-time statistics
+    - Auto-refresh functionality
+
+================================================================================
+PHASE 12: USER MANAGEMENT (1-2 Tage) - FULLSTACK APPROACH
+================================================================================
+
+12.1 USER ADMINISTRATION
+-------------------------
+[ ] Task 12.1.1: User Management UI
+    - Create Pages/Admin/Users.cshtml
+    - List all users
+    - Add/Edit/Delete actions
+
+[ ] Task 12.1.2: User Management Backend
+    - Implement user CRUD operations
+    - Role assignment functionality
+    - User status management
+
+[ ] Task 12.1.3: User Management Processing
+    - Connect forms to backend
+    - Handle user operations
+    - Authorization checks
+
+================================================================================
+PHASE 13: ADVANCED FEATURES (OPTIONAL) - FULLSTACK APPROACH
+================================================================================
+
+13.1 ADVANCED INVOICE FEATURES
+-------------------------------
+[ ] Task 13.1.1: Invoice Status Updates UI
+    - Status change buttons
+    - Payment marking interface
+    - Status history display
+
+[ ] Task 13.1.2: Invoice Status Backend
+    - Implement status change logic
+    - Payment tracking
+    - Automatic overdue detection
+
+13.2 REPORTING BASICS
+---------------------
+[ ] Task 13.2.1: Basic Reports UI
+    - Simple report pages
+    - Date range selectors
+    - Export buttons
+
+[ ] Task 13.2.2: Report Data Backend
+    - Implement basic report queries
+    - Sales summaries
+    - Customer reports
+
+13.3 ADVANCED SEARCH & FILTERING
+---------------------------------
+[ ] Task 13.3.1: Advanced Search UI
+    - Filter panels for all modules
+    - Date range pickers
+    - Multi-criteria search
+
+[ ] Task 13.3.2: Advanced Search Backend
+    - Complex query building
+    - Performance optimization
+    - Caching strategies
+
+================================================================================
+PHASE 14: TESTING & QUALITY ASSURANCE (4-5 Tage) - FULLSTACK APPROACH
+================================================================================
+
+14.1 UNIT TESTING
+------------------
+[ ] Task 14.1.1: Service Unit Tests
+    - CustomerService Tests
+    - InvoiceService Tests
+    - Repository Tests
+
+[ ] Task 14.1.2: Frontend Testing
+    - JavaScript function tests
+    - Form validation tests
+    - UI interaction tests
+
+14.2 INTEGRATION TESTING
+-------------------------
+[ ] Task 14.2.1: Database Integration Tests
+    - CRUD Operations
+    - Query Performance
+    - Migration Tests
+
+[ ] Task 14.2.2: End-to-End Testing
+    - Complete user workflows
+    - Cross-browser testing
+    - Mobile responsiveness
+
+================================================================================
+PHASE 15: DEPLOYMENT & DOCUMENTATION (3-4 Tage)
+================================================================================
+
+15.1 PRODUCTION SETUP
+----------------------
+[ ] Task 15.1.1: Production Configuration
+    - appsettings.Production.json
+    - Security configuration
+    - SSL setup
+
+[ ] Task 15.1.2: Database Deployment
+    - Production migration scripts
+    - Backup strategy
+    - Performance optimization
+
+15.2 DOCUMENTATION
+-------------------
+[ ] Task 15.2.1: User Documentation
+    - Step-by-step guides
+    - Screenshots and tutorials
+    - FAQ section
+
+[ ] Task 15.2.2: Technical Documentation
+    - Architecture overview
+    - API documentation
+    - Deployment guide
     - Kundenentwicklung
 
 [ ] Export-Funktionen
@@ -819,12 +909,6 @@ BUSINESS KRITERIEN
 ✓ E-Mail-Versand funktioniert zuverlässig
 ✓ Datenexport in gängige Formate möglich
 
-BENUTZER-FEEDBACK
------------------
-✓ Positive Bewertung von mindestens 80% der Benutzer
-✓ Weniger als 5 Support-Tickets pro Woche nach Einführung
-✓ System wird täglich produktiv genutzt
-
 ================================================================================
 RESSOURCEN UND KONTAKTE
 ================================================================================
@@ -852,15 +936,4 @@ SUPPORT KONTAKTE
 
 ================================================================================
 ENDE DES ARBEITSPLANS
-================================================================================
-
-Letzte Aktualisierung: 4. August 2025
-Version: 1.0
-Status: Bereit für Umsetzung
-
-Nächste Schritte:
-1. Git Repository auf GitHub erstellen
-2. Development Environment finalisieren
-3. Phase 2 (Datenbank & Modelle) beginnen
-
 ================================================================================
