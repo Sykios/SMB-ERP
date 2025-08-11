@@ -27,8 +27,7 @@ public interface IInvoiceRepository : IGenericRepository<SMBErp.Domain.Sales.Inv
     Task<string> GetNextInvoiceNumberAsync();
 }
 
-public interface IItemRepository
+public interface IItemRepository : IGenericRepository<SMBErp.Domain.Inventory.Item>
 {
-    Task<SMBErp.Domain.Inventory.Item?> GetByIdAsync(int id);
     Task<List<SMBErp.Domain.Inventory.Item>> GetActiveItemsAsync();
 }
